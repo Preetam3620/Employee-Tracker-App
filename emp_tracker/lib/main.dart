@@ -7,6 +7,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Employee Tracker',
       theme: ThemeData.dark().copyWith(
           primaryColor: Colors.blueGrey.shade900,
