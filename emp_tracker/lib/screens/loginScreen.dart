@@ -46,7 +46,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     filled: true,
                     prefixIcon: Icon(
                       Icons.account_circle,
-                      color: Colors.lightBlueAccent,
+                      color: Colors.black,
                     ),
                     hintText: ('Enter your Email'),
                     hintStyle: TextStyle(
