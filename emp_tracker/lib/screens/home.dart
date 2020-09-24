@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:emp_tracker/modules/bottom_icons.dart';
 import 'package:emp_tracker/screens/home.dart';
-import 'package:emp_tracker/screens/tasks.dart';
+import 'package:emp_tracker/screens/feed.dart';
 import 'package:emp_tracker/screens/profile.dart';
 import 'package:emp_tracker/screens/leaves.dart';
 
@@ -40,7 +40,7 @@ class _HomeState extends State<Home> {
                   onTap: () {
                     setState(() {
                       Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Tasks()));
+                          MaterialPageRoute(builder: (context) => Feed()));
                       theme1 = false;
                       theme2 = true;
                       theme4 = false;
