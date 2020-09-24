@@ -18,7 +18,13 @@ class _HomeState extends State<Home> {
   bool theme4 = false;
   bool theme5 = false;
 
-  final List<String> entries = <String>['Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadwdwa', 'B', 'C','D','E'];
+  final List<String> entries = <String>[
+    'Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadwdwa',
+    'B',
+    'C',
+    'D',
+    'E'
+  ];
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -65,11 +71,12 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.only(left: 20.0),
                   width: double.infinity,
                   color: Colors.black54,
-                  child: Text('Announcements',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 25.0,
-                  ),
+                  child: Text(
+                    'Announcements',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 25.0,
+                    ),
                   ),
                 ),
               ),
@@ -87,15 +94,15 @@ class _HomeState extends State<Home> {
                         ),
                         padding: EdgeInsets.all(10),
                         height: 135,
-                        child: Text('${entries[index]}',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 20.0
-                        ),),
+                        child: Text(
+                          '${entries[index]}',
+                          style: TextStyle(color: Colors.black, fontSize: 20.0),
+                        ),
                       ),
                     );
                   },
-                  separatorBuilder: (BuildContext context, int index) => const Divider(),
+                  separatorBuilder: (BuildContext context, int index) =>
+                      const Divider(),
                 ),
               ),
             ],
