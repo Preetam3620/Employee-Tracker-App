@@ -19,7 +19,7 @@ class _ProfileState extends State<Profile> {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          color: Color(0xFF00C2CB),
+          //color: Color(0xFF00C2CB),
           padding: EdgeInsets.all(10.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -77,7 +77,7 @@ class _ProfileState extends State<Profile> {
                   title: Text(
                     'Digital Marketing',
                     style: TextStyle(
-                      color: Color(0xFF00C2CB),
+                      color: Colors.black54,
                       fontFamily: 'Roboc',
                       fontSize: 25.0,
                     ),
@@ -96,7 +96,7 @@ class _ProfileState extends State<Profile> {
                     title: Text(
                       'BIO- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam turpis orci, laoreet sed dolor vitae, sagittis suscipit ante.  ',
                       style: TextStyle(
-                        color: Color(0xFF00C2CB),
+                        color: Colors.black54,
                         fontFamily: 'Roboc',
                         fontSize: 23.0,
                       ),
@@ -115,7 +115,7 @@ class _ProfileState extends State<Profile> {
                     title: Text(
                       'slmaoao@gmail.com',
                       style: TextStyle(
-                        color: Color(0xFF00C2CB),
+                        color: Colors.black54,
                         fontFamily: 'Roboc',
                         fontSize: 25.0,
                       ),
@@ -126,7 +126,7 @@ class _ProfileState extends State<Profile> {
             ],
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0x8800C2CB),
         appBar: AppBar(
           elevation: 0.0,
           backgroundColor: Color(0xFF00C2CB),
@@ -140,6 +140,7 @@ class _ProfileState extends State<Profile> {
             ),
           ],
         ),
+
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currid,
           items: [

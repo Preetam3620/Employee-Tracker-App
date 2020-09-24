@@ -5,6 +5,7 @@ import 'package:emp_tracker/screens/profile.dart';
 import 'package:emp_tracker/screens/leaves.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
 import 'package:emp_tracker/modules/CurrentIndex.dart';
+import 'feed.dart';
 
 class Home extends StatefulWidget {
 
@@ -14,12 +15,13 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
 
-final List<String> entries = <String>['Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadwdwa', 'B', 'C','D','E'];
+final List<String> entries = <String>['Announcement: 1', 'Announcement: 2', 'Announcement: 3','Announcement: 4','Announcement: 5'];
 int currind = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+
         appBar: AppBar(
           backgroundColor: Color(0xFF00C2CB),
           title: Text('Home'),
@@ -61,7 +63,6 @@ int currind = 0;
                   alignment: Alignment.centerLeft,
                   padding: EdgeInsets.only(left: 20.0),
                   width: double.infinity,
-                  color: Colors.black54,
                   child: Text('Announcements',
                   style: TextStyle(
                     color: Colors.white,
@@ -80,7 +81,7 @@ int currind = 0;
                       child: Container(
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(10.0),
-                          color: Color(0x7700C2CB),
+                          color: Colors.white,
                         ),
                         padding: EdgeInsets.all(10),
                         height: 135,
@@ -98,7 +99,7 @@ int currind = 0;
             ],
           ),
         ),
-        backgroundColor: Colors.white,
+        backgroundColor: Color(0x8800C2CB),
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currind,
           items: [
@@ -127,7 +128,7 @@ int currind = 0;
             setState(() {
               currind = index;
               if(currind == 1)
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Profile()));
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Feed()));
               else if(currind == 2){
                 Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Leaves()));
               }

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:emp_tracker/screens/form_screen.dart';
 
 class Feed extends StatefulWidget {
-  @override
-  _FeedState createState() => _FeedState();
+@override
+_FeedState createState() => _FeedState();
 }
 
 class _FeedState extends State<Feed> {
