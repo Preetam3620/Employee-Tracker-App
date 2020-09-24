@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:emp_tracker/modules/bottom_icons.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -7,141 +7,86 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  int theme = 0;
+  bool theme1 = false;
+  bool theme2 = false;
+  bool theme3 = false;
+  bool theme4 = false;
+  bool theme5 = false;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
+    return SafeArea(
+      child: Scaffold(
         backgroundColor: Colors.grey,
         bottomNavigationBar: Row(
           children: <Widget>[
             Expanded(
               child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    theme = 0;
-                  });
-                },
-                child: Container(
-                  height: 60.0,
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-                            theme == 0 ? Colors.blue: Colors.white,
-                            Colors.white,
-                            Colors.white,
-                          ],
-                          begin: (Alignment.bottomCenter),
-                          end: (Alignment.topCenter)
-                      ),
-                  ),
-                  child: Icon(
-                    Icons.home,
-                  ),
-                ),
-              ),
+                  onTap: () {
+                    setState(() {
+                      theme1 = true;
+                      theme2 = false;
+                      theme3 = false;
+                      theme4 = false;
+                      theme5 = false;
+                    });
+                  },
+                  child: BottomIcons(themeState: theme1, icon: Icons.home)),
             ),
             Expanded(
               child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    theme = 1;
-                  });
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-                            theme == 1 ? Colors.blue : Colors.white,
-                            Colors.white,
-                            Colors.white,
-                          ],
-                          begin: (Alignment.bottomCenter),
-                          end: (Alignment.topCenter)
-                      ),
-
-                  ),
-                  height: 60.0,
-                  child: Icon(
-                    Icons.work,
-                  ),
-                ),
-              ),
+                  onTap: () {
+                    setState(() {
+                      theme1 = false;
+                      theme2 = true;
+                      theme3 = false;
+                      theme4 = false;
+                      theme5 = false;
+                    });
+                  },
+                  child: BottomIcons(themeState: theme2, icon: Icons.work)),
             ),
             Expanded(
               child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    theme = 2;
-                  });
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-                            theme == 2 ? Colors.blue: Colors.white,
-                            Colors.white,
-                            Colors.white,
-                          ],
-                          begin: (Alignment.bottomCenter),
-                          end: (Alignment.topCenter)
-                      ),
-
-                  ),
-                  height: 60.0,
-                  child: Icon(
-                    Icons.pregnant_woman,
-                  ),
-                ),
-              ),
+                  onTap: () {
+                    setState(() {
+                      theme1 = false;
+                      theme2 = false;
+                      theme3 = true;
+                      theme4 = false;
+                      theme5 = false;
+                    });
+                  },
+                  child: BottomIcons(
+                      themeState: theme3, icon: Icons.pregnant_woman)),
             ),
             Expanded(
               child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    theme = 3;
-                  });
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-                            theme == 3 ? Colors.blue : Colors.white,
-                            Colors.white,
-                            Colors.white,
-                          ],
-                          begin: (Alignment.bottomCenter),
-                          end: (Alignment.topCenter))),
-                  height: 60.0,
-                  child: Icon(
-                    Icons.email,
-                  ),
-                ),
-              ),
+                  onTap: () {
+                    setState(() {
+                      theme1 = false;
+                      theme2 = false;
+                      theme3 = false;
+                      theme4 = true;
+                      theme5 = false;
+                    });
+                  },
+                  child: BottomIcons(
+                      themeState: theme4, icon: Icons.account_circle)),
             ),
             Expanded(
               child: GestureDetector(
-                onTap: () {
-                  setState(() {
-                    theme = 4;
-                  });
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      gradient: LinearGradient(
-                          colors: [
-                            theme == 4 ? Colors.blue : Colors.white,
-                            Colors.white,
-                            Colors.white,
-                          ],
-                          begin: (Alignment.bottomCenter),
-                          end: (Alignment.topCenter))),
-                  height: 60.0,
-                  child: Icon(
-                    Icons.account_circle,
-                  ),
-                ),
-              ),
+                  onTap: () {
+                    setState(() {
+                      theme1 = false;
+                      theme2 = false;
+                      theme3 = false;
+                      theme4 = false;
+                      theme5 = true;
+                    });
+                  },
+                  child: BottomIcons(
+                      themeState: theme5, icon: Icons.account_circle)),
             ),
           ],
         ),
