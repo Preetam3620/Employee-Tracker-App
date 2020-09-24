@@ -28,12 +28,12 @@ class _TasksState extends State<Tasks> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home()));
                       theme1 = true;
                       theme2 = false;
                       theme4 = false;
                       theme5 = false;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
                     });
                   },
                   child: BottomIcons(themeState: theme1, icon: Icons.home)),
@@ -55,12 +55,12 @@ class _TasksState extends State<Tasks> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      theme1 = false;
-                      theme2 = false;
-                      theme4 = false;
-                      theme5 = false;
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Leaves()));
+                      theme1 = false;
+                      theme2 = false;
+                      theme4 = true;
+                      theme5 = false;
                     });
                   },
                   child: BottomIcons(
@@ -70,12 +70,12 @@ class _TasksState extends State<Tasks> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Profile()));
                       theme1 = false;
                       theme2 = false;
                       theme4 = false;
                       theme5 = true;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Profile()));
                     });
                   },
                   child: BottomIcons(

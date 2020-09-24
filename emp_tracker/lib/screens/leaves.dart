@@ -28,12 +28,12 @@ class _LeavesState extends State<Leaves> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home()));
                       theme1 = true;
                       theme2 = false;
                       theme4 = false;
                       theme5 = false;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Home()));
                     });
                   },
                   child: BottomIcons(themeState: theme1, icon: Icons.home)),
@@ -42,12 +42,12 @@ class _LeavesState extends State<Leaves> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Tasks()));
                       theme1 = false;
                       theme2 = true;
                       theme4 = false;
                       theme5 = false;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Tasks()));
                     });
                   },
                   child:
@@ -59,7 +59,7 @@ class _LeavesState extends State<Leaves> {
                     setState(() {
                       theme1 = false;
                       theme2 = false;
-                      theme4 = false;
+                      theme4 = true;
                       theme5 = false;
                     });
                   },
@@ -70,12 +70,12 @@ class _LeavesState extends State<Leaves> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Profile()));
                       theme1 = false;
                       theme2 = false;
                       theme4 = false;
                       theme5 = true;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Profile()));
                     });
                   },
                   child: BottomIcons(

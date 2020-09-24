@@ -40,12 +40,12 @@ class _HomeState extends State<Home> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Tasks()));
                       theme1 = false;
                       theme2 = true;
                       theme4 = false;
                       theme5 = false;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Tasks()));
                     });
                   },
                   child:
@@ -55,12 +55,13 @@ class _HomeState extends State<Home> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
-                      theme1 = false;
-                      theme2 = false;
-                      theme4 = false;
-                      theme5 = false;
                       Navigator.push(context,
                           MaterialPageRoute(builder: (context) => Leaves()));
+
+                      theme1 = false;
+                      theme2 = false;
+                      theme4 = true;
+                      theme5 = false;
                     });
                   },
                   child: BottomIcons(
@@ -70,12 +71,12 @@ class _HomeState extends State<Home> {
               child: GestureDetector(
                   onTap: () {
                     setState(() {
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Profile()));
                       theme1 = false;
                       theme2 = false;
                       theme4 = false;
                       theme5 = true;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Profile()));
                     });
                   },
                   child: BottomIcons(
