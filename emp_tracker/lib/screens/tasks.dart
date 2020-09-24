@@ -5,12 +5,12 @@ import 'package:emp_tracker/screens/tasks.dart';
 import 'package:emp_tracker/screens/profile.dart';
 import 'package:emp_tracker/screens/leaves.dart';
 
-class Home extends StatefulWidget {
+class Tasks extends StatefulWidget {
   @override
-  _HomeState createState() => _HomeState();
+  _TasksState createState() => _TasksState();
 }
 
-class _HomeState extends State<Home> {
+class _TasksState extends State<Tasks> {
   bool theme1 = false;
   bool theme2 = false;
   bool theme4 = false;
@@ -20,7 +20,7 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Text('home page/announcements'),
+        body: Text('Tasks page'),
         backgroundColor: Colors.grey,
         bottomNavigationBar: Row(
           children: <Widget>[
@@ -32,6 +32,8 @@ class _HomeState extends State<Home> {
                       theme2 = false;
                       theme4 = false;
                       theme5 = false;
+                      Navigator.push(context,
+                          MaterialPageRoute(builder: (context) => Home()));
                     });
                   },
                   child: BottomIcons(themeState: theme1, icon: Icons.home)),
@@ -44,8 +46,6 @@ class _HomeState extends State<Home> {
                       theme2 = true;
                       theme4 = false;
                       theme5 = false;
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Tasks()));
                     });
                   },
                   child:

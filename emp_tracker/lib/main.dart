@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'screens/loginScreen.dart';
+import 'screens/home.dart';
+import 'screens/profile.dart';
+import 'screens/tasks.dart';
 
 void main() => runApp(MyApp());
 
@@ -14,6 +17,12 @@ class MyApp extends StatelessWidget {
           scaffoldBackgroundColor: Color(0xFFFFFFFF),
           accentColor: Colors.white),
       home: LoginScreen(),
+      routes: {
+        '/login': (context) => LoginScreen(),
+        '/home': (context) => Home(),
+        '/profile': (context) => Profile(),
+        '/tasks': (context) => Tasks(),
+      },
     );
   }
 }
