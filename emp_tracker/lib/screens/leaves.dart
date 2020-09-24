@@ -20,7 +20,7 @@ class _LeavesState extends State<Leaves> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: Text('profile page'),
+        body: Text('tasks'),
         backgroundColor: Colors.grey,
         bottomNavigationBar: Row(
           children: <Widget>[
