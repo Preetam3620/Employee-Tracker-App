@@ -11,7 +11,7 @@ class BottomIcons extends StatelessWidget {
       height: 60.0,
       decoration: BoxDecoration(
         gradient: LinearGradient(colors: [
-          themeState == true ? Colors.blue : Colors.white,
+          themeState == true ? Color(0xFF64DD17) : Colors.white,
           Colors.white,
           Colors.white,
         ], begin: (Alignment.bottomCenter), end: (Alignment.topCenter)),
