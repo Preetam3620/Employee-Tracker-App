@@ -1,24 +1,21 @@
-import 'package:flutter/animation.dart';
+
 import 'package:flutter/material.dart';
-import 'package:emp_tracker/modules/bottom_icons.dart';
-import 'package:emp_tracker/screens/home.dart';
 import 'package:emp_tracker/screens/tasks.dart';
 import 'package:emp_tracker/screens/profile.dart';
 import 'package:emp_tracker/screens/leaves.dart';
 import 'package:flutter_image_slideshow/flutter_image_slideshow.dart';
+import 'package:emp_tracker/modules/CurrentIndex.dart';
 
 class Home extends StatefulWidget {
+
   @override
   _HomeState createState() => _HomeState();
 }
 
 class _HomeState extends State<Home> {
-  bool theme1 = false;
-  bool theme2 = false;
-  bool theme4 = false;
-  bool theme5 = false;
 
-  final List<String> entries = <String>['Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadwdwa', 'B', 'C','D','E'];
+final List<String> entries = <String>['Aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaadwdwa', 'B', 'C','D','E'];
+int currind = 0;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -102,67 +99,42 @@ class _HomeState extends State<Home> {
           ),
         ),
         backgroundColor: Colors.white,
-        bottomNavigationBar: Row(
-          children: <Widget>[
-            Expanded(
-              child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      theme1 = true;
-                      theme2 = false;
-                      theme4 = false;
-                      theme5 = false;
-                    });
-                  },
-                  child: BottomIcons(themeState: theme1, icon: Icons.home)),
+        bottomNavigationBar: BottomNavigationBar(
+          currentIndex: currind,
+          items: [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              title: Text('Home'),
+              backgroundColor: Colors.black,
             ),
-            Expanded(
-              child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Tasks()));
-                      theme1 = false;
-                      theme2 = true;
-                      theme4 = false;
-                      theme5 = false;
-                    });
-                  },
-                  child:
-                      BottomIcons(themeState: theme2, icon: Icons.assignment)),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.assignment),
+              title: Text('Feedback'),
+              backgroundColor: Colors.black,
             ),
-            Expanded(
-              child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Leaves()));
-
-                      theme1 = false;
-                      theme2 = false;
-                      theme4 = true;
-                      theme5 = false;
-                    });
-                  },
-                  child: BottomIcons(
-                      themeState: theme4, icon: Icons.calendar_today)),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_today),
+              title: Text('Leave'),
+              backgroundColor: Colors.black,
             ),
-            Expanded(
-              child: GestureDetector(
-                  onTap: () {
-                    setState(() {
-                      Navigator.push(context,
-                          MaterialPageRoute(builder: (context) => Profile()));
-                      theme1 = false;
-                      theme2 = false;
-                      theme4 = false;
-                      theme5 = true;
-                    });
-                  },
-                  child: BottomIcons(
-                      themeState: theme5, icon: Icons.account_circle)),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle),
+              title: Text('Profile'),
+              backgroundColor: Colors.black,
             ),
           ],
+          onTap: (index){
+            setState(() {
+              currind = index;
+              if(currind == 1)
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Profile()));
+              else if(currind == 2){
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Leaves()));
+              }
+              else if(currind == 3)
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Profile()));
+            });
+          },
         ),
       ),
     );
