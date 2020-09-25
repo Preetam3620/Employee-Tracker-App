@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emp_tracker/screens/home.dart';
-
 import 'package:emp_tracker/screens/profile.dart';
-
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:rflutter_alert/rflutter_alert.dart';
 
 class Leaves extends StatefulWidget {
   @override
@@ -57,14 +56,16 @@ class _LeavesState extends State<Leaves> {
                 children: [
                   Text(
                     'From Date',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20,color: Colors.white),
                   ),
                   DateTimePicker(
+                    decoration: InputDecoration(
+                        icon: Icon(Icons.event,color: Colors.white,),
+                    ),
                     initialValue: DateTime.now().toString(),
                     dateMask: 'd MMM, yyyy',
                     firstDate: DateTime(2000),
                     lastDate: DateTime(2100),
-                    icon: Icon(Icons.event),
                     dateLabelText: 'Date',
                     onChanged: (fromDate) => _fromDate = fromDate,
                     validator: (fromDate) {
@@ -78,14 +79,16 @@ class _LeavesState extends State<Leaves> {
                   ),
                   Text(
                     'To Date',
-                    style: TextStyle(fontSize: 20),
+                    style: TextStyle(fontSize: 20, color: Colors.white),
                   ),
                   DateTimePicker(
+                    decoration: InputDecoration(
+                      icon: Icon(Icons.event,color: Colors.white,),
+                        ),
                     initialValue: DateTime.now().toString(),
                     dateMask: 'd MMM, yyyy',
                     firstDate: DateTime(2000),
                     lastDate: DateTime(2100),
-                    icon: Icon(Icons.event),
                     dateLabelText: 'Date',
                     onChanged: (toDate) => _toDate = toDate,
                     validator: (toDate) {
@@ -102,9 +105,12 @@ class _LeavesState extends State<Leaves> {
                   ),
                   DropdownButton<Item>(
                     dropdownColor: Colors.white,
-                    iconEnabledColor: Colors.white,
+                    iconEnabledColor: Colors.black,
                     // focusColor: Colors.white,
-                    hint: Text("Select item"),
+                    hint: Text("Select item",
+                            style: TextStyle(
+                              color: Colors.grey,
+                            ),),
                     value: selectedUser,
                     onChanged: (Item Value) {
                       setState(() {
@@ -139,6 +145,7 @@ class _LeavesState extends State<Leaves> {
                       focusedBorder: OutlineInputBorder(
                           borderSide: BorderSide(color: Colors.black45)),
                       hintText: 'Description (optional)',
+
                     ),
                     maxLines: 3,
                   ),
@@ -150,13 +157,28 @@ class _LeavesState extends State<Leaves> {
                         'todate': _toDate,
                         'reason': _reason,
                         'Description': _description,
+
                       });
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Leaves()));
+                      Alert(
+                          closeIcon: Icon(Icons.phone_missed,
+                            color: Colors.white,) ,
+                          context: context,
+                          type: AlertType.success,
+                          title: 'Leave Application',
+                          desc: 'Request has been Issued',
+                          style: AlertStyle(
+                            backgroundColor: Colors.white,
+                          )).show();
                     },
                     child: Container(
                       // alignment: Alignment.center,
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                        color: Color(0xFF64DD17),
+                        color: Color(0xFF00C2CB),
                         borderRadius: BorderRadius.circular(5.0),
                       ),
                       child: Text(
@@ -173,8 +195,10 @@ class _LeavesState extends State<Leaves> {
               ),
             ),
           ),
+
         ),
         backgroundColor: Color(0x8800C2CB),
+
         bottomNavigationBar: BottomNavigationBar(
           currentIndex: currid,
           items: [
