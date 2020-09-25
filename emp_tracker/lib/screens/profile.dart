@@ -16,7 +16,7 @@ class _ProfileState extends State<Profile> {
 
   String _bio= '';
   String _name = '';
-  AssetImage acc;
+  AssetImage acc = AssetImage('images/mgk.jpg');
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +45,7 @@ class _ProfileState extends State<Profile> {
                           SizedBox(width: 25.0,),
                           CircleAvatar(
                             radius: 80.0,
-                            backgroundImage: AssetImage('images/mgk.jpg'),
+                            backgroundImage: acc,
                           ),
                           IconButton(icon: Icon(
                               Icons.add, size: 40.0, color: Colors.white),

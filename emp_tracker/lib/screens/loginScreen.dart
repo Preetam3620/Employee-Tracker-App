@@ -5,12 +5,12 @@ import 'home.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:emp_tracker/screens/feed.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
 }
-
 
 final _auth = FirebaseAuth.instance;
 final _data = FirebaseFirestore.instance;
@@ -34,7 +34,7 @@ class _LoginScreenState extends State<LoginScreen> {
   bool remMe;
   bool isEmp;
 
-  bool spinner =  false;
+  bool spinner = false;
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +69,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       padding: EdgeInsets.only(left: 35.0, right: 35.0),
                       child: TextField(
-                        onChanged: (value){
+                        onChanged: (value) {
                           email = value;
                         },
                         style: TextStyle(color: Colors.black),
@@ -104,7 +104,7 @@ class _LoginScreenState extends State<LoginScreen> {
                     child: Container(
                       padding: EdgeInsets.only(left: 35.0, right: 35.0),
                       child: TextField(
-                        onChanged: (value){
+                        onChanged: (value) {
                           password = value;
                         },
                         style: TextStyle(color: Colors.black),
@@ -140,7 +140,6 @@ class _LoginScreenState extends State<LoginScreen> {
                           SizedBox(
                             width: 10.0,
                           ),
-
                           Text(
                             '                    ',
                             style: TextStyle(
@@ -153,7 +152,10 @@ class _LoginScreenState extends State<LoginScreen> {
                             width: 20.0,
                           ),
                           DropdownButton<Item>(
-                            hint: Text("Select User",style: TextStyle(color:Colors.black54),),
+                            hint: Text(
+                              "Select User",
+                              style: TextStyle(color: Colors.black54),
+                            ),
                             value: selectedUser,
                             onChanged: (Item Value) {
                               setState(() {
@@ -188,20 +190,49 @@ class _LoginScreenState extends State<LoginScreen> {
                   Expanded(
                     flex: 2,
                     child: GestureDetector(
-                      onTap: () async{
+                      onTap: () async {
                         setState(() {
                           spinner = true;
                         });
                         try {
                           final user = await _auth.signInWithEmailAndPassword(
                               email: email, password: password);
-                          if (user != null)
-                            Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Home()));
+                          print(selectedUser.name);
+                          if (user != null) {
+                            if (selectedUser.name == 'Employee') {
+                              setState(() {
+                                spinner = false;
+                              });
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Home()));
+                            } else if (selectedUser.name == 'Interveiwee') {
+                              setState(() {
+                                spinner = false;
+                              });
+                              Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => Feed()));
+                            } else {
+                              setState(() {
+                                spinner = false;
+                              });
+                              Alert(
+                                  context: context,
+                                  type: AlertType.error,
+                                  title: 'Login Failed!',
+                                  desc: 'Please Select User Type',
+                                  style: AlertStyle(
+                                    backgroundColor: Colors.white,
+                                  )).show();
+                            }
+                          }
                           setState(() {
                             spinner = false;
                           });
-                        }
-                        catch(e) {
+                        } catch (e) {
                           setState(() {
                             spinner = false;
                           });
@@ -210,14 +241,13 @@ class _LoginScreenState extends State<LoginScreen> {
                               type: AlertType.error,
                               title: 'Login Failed!',
                               desc: 'Invalid Combination of Credentials',
-                            style: AlertStyle(
-                              backgroundColor: Colors.white,
-                            )
-                          ).show();
-                        };
+                              style: AlertStyle(
+                                backgroundColor: Colors.white,
+                              )).show();
+                        }
+                        ;
                       },
                       child: Container(
-
                         alignment: Alignment.center,
                         margin: EdgeInsets.only(left: 70.0, right: 70.0),
                         decoration: BoxDecoration(

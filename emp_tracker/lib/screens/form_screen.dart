@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 class FormScreen extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
@@ -14,6 +14,8 @@ class FormScreenState extends State<FormScreen> {
   String _Ans2;
   String _Ans3;
   String _Ans4;
+
+  final _Firestore = FirebaseFirestore.instance;
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -197,6 +199,7 @@ class FormScreenState extends State<FormScreen> {
                       print(_Ans2);
                       print(_Ans3);
                       print(_Ans4);
+                      _Firestore.collection('feedback').add({'name':_name,'emailid':_email,'answer1':_Ans1,'answer2':_Ans2,'answer3':_Ans3,'answer4':_Ans4});
 
                       //Send to API
                     },
