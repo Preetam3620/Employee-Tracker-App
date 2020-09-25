@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:emp_tracker/modules/CurrentIndex.dart';
 import 'package:emp_tracker/screens/leaves.dart';
-import 'package:emp_tracker/modules/CurrentIndex.dart';
 import 'home.dart';
-
+import 'package:image_picker/image_picker.dart';
+import 'package:async/async.dart';
+import 'dart:io';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class Profile extends StatefulWidget {
   @override
@@ -12,11 +14,42 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
 
+  String imp;
+  File image;
+void pickimage()async{
+  PickedFile pickedFile  = await ImagePicker().getImage(source: ImageSource.gallery);
+       imp = pickedFile.path;
+       image = File(pickedFile.path);
+      setState(() {
+
+      });
+}
+
+
+
   int currid = 2;
 
   String _bio= '';
+  String uid;
   String _name = '';
   AssetImage acc = AssetImage('images/mgk.jpg');
+  User us;
+  final _auth = FirebaseAuth.instance;
+  void getCurrentuser()
+  {
+    us = _auth.currentUser;
+    print(us.uid);
+    uid = us.uid;
+    setState(() {
+
+    });
+  }
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    getCurrentuser();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,12 +78,15 @@ class _ProfileState extends State<Profile> {
                           SizedBox(width: 25.0,),
                           CircleAvatar(
                             radius: 80.0,
-                            backgroundImage: acc,
+                            //child: _image == null?Text('Enter Image here'):,
+                            backgroundImage: image == null? acc:FileImage(File(image.path)),
                           ),
-                          IconButton(icon: Icon(
+
+                          IconButton(
+                            icon: Icon(
                               Icons.add, size: 40.0, color: Colors.white),
                             onPressed: () {
-                              //something
+                              pickimage();
                             },
                           )
                         ],
@@ -85,7 +121,7 @@ class _ProfileState extends State<Profile> {
                           color: Color(0xFF00C2CB),
                         ),
                         title: Text(
-                          'Digital Marketing',
+                          _name,
                           style: TextStyle(
                             color: Colors.black54,
                             fontFamily: 'Roboc',

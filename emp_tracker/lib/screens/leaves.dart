@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emp_tracker/screens/home.dart';
-
+import 'package:rflutter_alert/rflutter_alert.dart';
 import 'package:emp_tracker/screens/profile.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 
 class Leaves extends StatefulWidget {
@@ -20,7 +20,8 @@ class Item {
 class _LeavesState extends State<Leaves> {
 
 
-
+  final _auth = FirebaseAuth.instance;
+  String mailid;
   Item selectedUser;
   List<Item> users = <Item>[
     const Item('Personal'),
@@ -37,6 +38,12 @@ class _LeavesState extends State<Leaves> {
   String _toDate;
   String _reason;
   String _description;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    mailid = _auth.currentUser.email;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -102,8 +109,8 @@ class _LeavesState extends State<Leaves> {
                   ),
                   DropdownButton<Item>(
                     dropdownColor: Colors.white,
-                    iconEnabledColor: Colors.white,
-                    // focusColor: Colors.white,
+                    iconEnabledColor: Colors.black,
+                    focusColor: Colors.white,
                     hint: Text("Select item"),
                     value: selectedUser,
                     onChanged: (Item Value) {
@@ -149,8 +156,23 @@ class _LeavesState extends State<Leaves> {
                         'fromdate': _fromDate,
                         'todate': _toDate,
                         'reason': _reason,
-                        'Description': _description,
+                        'description': _description,
+                        'emailId': mailid,
                       });
+                      Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Leaves()));
+                      Alert(
+                          closeIcon: Icon(Icons.phone_missed,
+                            color: Colors.white,) ,
+                          context: context,
+                          type: AlertType.success,
+                          title: 'Leave Application',
+                          desc: 'Request has been Issued',
+                          style: AlertStyle(
+                            backgroundColor: Colors.white,
+                          )).show();
                     },
                     child: Container(
                       // alignment: Alignment.center,

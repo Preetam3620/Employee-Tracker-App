@@ -33,7 +33,8 @@ class _LoginScreenState extends State<LoginScreen> {
   String password;
   bool remMe;
   bool isEmp;
-
+  String uid;
+  User us;
   bool spinner = false;
 
   @override
@@ -199,6 +200,9 @@ class _LoginScreenState extends State<LoginScreen> {
                               email: email, password: password);
                           print(selectedUser.name);
                           if (user != null) {
+                            us = _auth.currentUser;
+
+                            print(us);
                             if (selectedUser.name == 'Employee') {
                               setState(() {
                                 spinner = false;
