@@ -22,7 +22,7 @@ class FormScreenState extends State<FormScreen> {
   Widget _buildName() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Name'),
-      maxLength: 10,
+      maxLength: 20,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Name is Required';
@@ -61,7 +61,7 @@ class FormScreenState extends State<FormScreen> {
   Widget _buildAnswer1() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Answer'),
-      maxLength: 20,
+      maxLength: 50,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Answer is Required';
@@ -78,7 +78,7 @@ class FormScreenState extends State<FormScreen> {
   Widget _buildAnswer2() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Answer'),
-      maxLength: 20,
+      maxLength: 50,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Answer is Required';
@@ -95,7 +95,7 @@ class FormScreenState extends State<FormScreen> {
   Widget _buildAnswer3() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Answer'),
-      maxLength: 20,
+      maxLength: 50,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Answer is Required';
@@ -112,7 +112,7 @@ class FormScreenState extends State<FormScreen> {
   Widget _buildAnswer4() {
     return TextFormField(
       decoration: InputDecoration(labelText: 'Answer'),
-      maxLength: 20,
+      maxLength: 50,
       validator: (String value) {
         if (value.isEmpty) {
           return 'Answer is Required';
