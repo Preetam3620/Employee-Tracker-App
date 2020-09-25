@@ -109,11 +109,6 @@ int currind = 0;
               backgroundColor: Colors.black,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.assignment),
-              title: Text('Feedback'),
-              backgroundColor: Colors.black,
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today),
               title: Text('Leave'),
               backgroundColor: Colors.black,
@@ -124,20 +119,20 @@ int currind = 0;
               backgroundColor: Colors.black,
             ),
           ],
-          onTap: (index){
+          onTap: (index) {
             setState(() {
               currind = index;
-              if(currind == 1)
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Feed()));
-              else if(currind == 2){
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Leaves()));
+              if (currind == 1)
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Leaves()));
+              else if (currind == 2) {
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Profile()));
               }
-              else if(currind == 3)
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Profile()));
-            });
-          },
-        ),
+            },);
+          }
       ),
+    )
     );
   }
 }

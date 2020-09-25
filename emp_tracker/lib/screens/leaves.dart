@@ -162,11 +162,11 @@ class _LeavesState extends State<Leaves> {
               title: Text('Home'),
               backgroundColor: Colors.black,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(Icons.assignment),
-              title: Text('Feedback'),
-              backgroundColor: Colors.black,
-            ),
+            // BottomNavigationBarItem(
+            //   icon: Icon(Icons.assignment),
+            //   title: Text('Feedback'),
+            //   backgroundColor: Colors.black,
+            // ),
             BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today),
               title: Text('Leave'),
@@ -184,10 +184,7 @@ class _LeavesState extends State<Leaves> {
               if(currid == 0){
                 Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Home()));
               }
-              else if(currid == 2){
-                Navigator.push(context,MaterialPageRoute(builder: (context) => Leaves()));
-              }
-              else if(currid == 3)
+              else if(currid == 2)
                 Navigator.push(context,MaterialPageRoute(builder: (context) => Profile()));
             });
           },

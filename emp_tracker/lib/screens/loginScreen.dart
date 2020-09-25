@@ -110,7 +110,7 @@ class _LoginScreenState extends State<LoginScreen> {
                 Expanded(
                   flex: 1,
                   child: Container(
-                    padding: EdgeInsets.only(left: 35.0, right: 35.0),
+                    padding: EdgeInsets.only(left: 30.0, right: 30.0),
                     child: Row(
                       children: <Widget>[
                         SizedBox(
@@ -142,7 +142,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         SizedBox(
-                          width: 30.0,
+                          width: 20.0,
                         ),
                         DropdownButton<Item>(
                           hint: Text("Select item"),
@@ -175,7 +175,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                 ),
                 SizedBox(
-                  height: 30.0,
+                  height: 20.0,
                 ),
                 Expanded(
                   flex: 2,

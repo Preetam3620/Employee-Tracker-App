@@ -12,118 +12,128 @@ class Profile extends StatefulWidget {
 
 class _ProfileState extends State<Profile> {
 
-  int currid = 3;
+  int currid = 2;
 
   @override
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
         body: Container(
-          //color: Color(0xFF00C2CB),
           padding: EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: <Widget>[
-              //Expanded(flex: 1, child: Container()),
-              Expanded(
-                flex: 2,
-                child: Center(
-                  child: Center(
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.end,
-                      children: [
-                        SizedBox(width: 25.0,),
-                        CircleAvatar(
-                          radius: 80.0,
-                          backgroundImage: AssetImage('images/mgk.jpg'),
+          child: SingleChildScrollView(
+            child: SizedBox(
+              height: MediaQuery
+                  .of(context)
+                  .size
+                  .height,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: <Widget>[
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Center(
+                    child: Center(
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
+                        children: [
+                          SizedBox(width: 25.0,),
+                          CircleAvatar(
+                            radius: 80.0,
+                            backgroundImage: AssetImage('images/mgk.jpg'),
+                          ),
+                          IconButton(icon: Icon(
+                              Icons.add, size: 40.0, color: Colors.white),
+                            onPressed: () {
+                              //something
+                            },
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Expanded(
+
+                    child: Center(
+                      child: Text(
+                        'UserName',
+                        style: TextStyle(
+                          fontSize: 35.0,
+                          fontFamily: 'Roboc',
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
                         ),
-                        IconButton(icon:Icon(Icons.add, size: 40.0, color: Colors.white),
-                          onPressed: (){
-                          //something
-                          },
+
+                      ),
+                    ),
+                  ),
+                  SizedBox(height: 10.0),
+                  Card(
+                    color: Colors.white,
+                    margin: EdgeInsets.symmetric(
+                      vertical: 3.0, horizontal: 25.0,),
+                    child: ListTile(
+
+                        leading: Icon(
+                          Icons.person,
+                          color: Color(0xFF00C2CB),
+                        ),
+                        title: Text(
+                          'Digital Marketing',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontFamily: 'Roboc',
+                            fontSize: 25.0,
+                          ),
                         )
-                      ],
                     ),
                   ),
-                ),
-              ),
-              SizedBox(height: 10.0),
-              Expanded(
+                  Card(
+                    color: Colors.white,
+                    margin: EdgeInsets.symmetric(
+                      vertical: 3.0, horizontal: 25.0,),
+                    child: ListTile(
 
-                child: Center(
-                  child: Text(
-                    'UserName',
-                    style: TextStyle(
-                      fontSize: 35.0,
-                      fontFamily: 'Roboc',
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
+                        leading: Icon(
+                          Icons.assistant,
+                          color: Color(0xFF00C2CB),
+                        ),
+                        title: Text(
+                          'BIO- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam turpis orci, laoreet sed dolor vitae, sagittis suscipit ante.  ',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontFamily: 'Roboc',
+                            fontSize: 23.0,
+                          ),
+                        )
                     ),
-
                   ),
-                ),
-              ),
-              SizedBox(height: 10.0),
-              Card(
-                color: Colors.white,
-                margin: EdgeInsets.symmetric(vertical: 3.0, horizontal: 25.0,),
-                child: ListTile(
+                  Card(
+                    color: Colors.white,
+                    margin: EdgeInsets.symmetric(
+                      vertical: 3.0, horizontal: 25.0,),
+                    child: ListTile(
 
-                  leading: Icon(
-                    Icons.person,
-                    color: Color(0xFF00C2CB),
+                        leading: Icon(
+                          Icons.email,
+                          color: Color(0xFF00C2CB),
+                        ),
+                        title: Text(
+                          'slmaoao@gmail.com',
+                          style: TextStyle(
+                            color: Colors.black54,
+                            fontFamily: 'Roboc',
+                            fontSize: 25.0,
+                          ),
+                        )
+                    ),
                   ),
-                  title: Text(
-                    'Digital Marketing',
-                    style: TextStyle(
-                      color: Colors.black54,
-                      fontFamily: 'Roboc',
-                      fontSize: 25.0,
-                    ),
-                  )
+                  Expanded(flex: 1, child: Container(),)
+                ],
               ),
-              ),
-              Card(
-                color: Colors.white,
-                margin: EdgeInsets.symmetric(vertical: 3.0, horizontal: 25.0,),
-                child: ListTile(
-
-                    leading: Icon(
-                      Icons.assistant,
-                      color: Color(0xFF00C2CB),
-                    ),
-                    title: Text(
-                      'BIO- Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam turpis orci, laoreet sed dolor vitae, sagittis suscipit ante.  ',
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontFamily: 'Roboc',
-                        fontSize: 23.0,
-                      ),
-                    )
-                ),
-              ),
-              Card(
-                color: Colors.white,
-                margin: EdgeInsets.symmetric(vertical: 3.0, horizontal: 25.0,),
-                child: ListTile(
-
-                    leading: Icon(
-                      Icons.email,
-                      color: Color(0xFF00C2CB),
-                    ),
-                    title: Text(
-                      'slmaoao@gmail.com',
-                      style: TextStyle(
-                        color: Colors.black54,
-                        fontFamily: 'Roboc',
-                        fontSize: 25.0,
-                      ),
-                    )
-                ),
-              ),
-              Expanded(flex:1, child:Container(),)
-            ],
+            ),
           ),
         ),
         backgroundColor: Color(0x8800C2CB),
@@ -134,8 +144,8 @@ class _ProfileState extends State<Profile> {
           actions: <Widget>[
             IconButton(icon: Icon(Icons.edit),
               color: Colors.white,
-              onPressed: (){
-            //something
+              onPressed: () {
+                //something
               },
             ),
           ],
@@ -150,11 +160,6 @@ class _ProfileState extends State<Profile> {
               backgroundColor: Colors.black,
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.assignment),
-              title: Text('Feedback'),
-              backgroundColor: Colors.black,
-            ),
-            BottomNavigationBarItem(
               icon: Icon(Icons.calendar_today),
               title: Text('Leave'),
               backgroundColor: Colors.black,
@@ -165,18 +170,18 @@ class _ProfileState extends State<Profile> {
               backgroundColor: Colors.black,
             ),
           ],
-          onTap: (index){
+          onTap: (index) {
             setState(() {
               currid = index;
-              if(currid == 0){
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Home()));
+              if (currid == 0) {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Home()));
               }
-              else if(currid == 2){
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Leaves()));
+              else if (currid == 1) {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Leaves()));
               }
-              else if(currid == 3)
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Profile()));
-            });
+            },);
           },
         ),
       ),
