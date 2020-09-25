@@ -29,7 +29,7 @@ class _LeavesState extends State<Leaves> {
     const Item('Other'),
   ];
   final _controller = TextEditingController();
-  int currid = 2;
+  int currid = 1;
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -185,7 +185,7 @@ class _LeavesState extends State<Leaves> {
                 Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Home()));
               }
               else if(currid == 2)
-                Navigator.push(context,MaterialPageRoute(builder: (context) => Profile()));
+                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Profile()));
             });
           },
         ),

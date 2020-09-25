@@ -14,6 +14,10 @@ class _ProfileState extends State<Profile> {
 
   int currid = 2;
 
+  String _bio= '';
+  String _name = '';
+  AssetImage acc;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -128,6 +132,34 @@ class _ProfileState extends State<Profile> {
                             fontSize: 25.0,
                           ),
                         )
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20.0,
+                  ),
+                  Container(
+                    height: 60.0,
+                    alignment: Alignment.center,
+                    margin: EdgeInsets.only(left: 70.0, right: 70.0),
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          Color(0xFF64DD17),
+                          Color(0xFF00C2CB),
+                        ],
+                        begin: Alignment.centerLeft,
+                        end: Alignment.centerRight,
+                      ),
+                      color: Colors.black,
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                    child: Text(
+                      "Log Out",
+                      style: TextStyle(
+                        color: Colors.black54,
+                        fontSize: 25.0,
+                        fontWeight: FontWeight.w600,
+                      ),
                     ),
                   ),
                   Expanded(flex: 1, child: Container(),)

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "925343868572",
+    "firebase_url": "https://emptrack-3f0b6.firebaseio.com",
+    "project_id": "emptrack-3f0b6",
+    "storage_bucket": "emptrack-3f0b6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:925343868572:android:9369ed320fcd6609096f59",
+        "android_client_info": {
+          "package_name": "com.cypher.emp_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "925343868572-ttstqog61b7d8s8bdagu13079jmqjn0m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCscqkspsxG81FqqIxgXVIZP4cDp9Tw24M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "925343868572-ttstqog61b7d8s8bdagu13079jmqjn0m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
