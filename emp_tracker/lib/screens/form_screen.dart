@@ -217,6 +217,8 @@ class FormScreenState extends State<FormScreen> {
                         'answer4': _Ans4
                       });
                       Alert(
+                        closeIcon: Icon(Icons.phone_missed,
+                        color: Colors.white,) ,
                           context: context,
                           type: AlertType.success,
                           title: 'Response Submitted!',

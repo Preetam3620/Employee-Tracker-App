@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:emp_tracker/modules/bottom_icons.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emp_tracker/screens/home.dart';
-import 'package:emp_tracker/screens/tasks.dart';
+
 import 'package:emp_tracker/screens/profile.dart';
-import 'package:emp_tracker/screens/leaves.dart';
+
 import 'package:date_time_picker/date_time_picker.dart';
 
 class Leaves extends StatefulWidget {
@@ -30,6 +30,14 @@ class _LeavesState extends State<Leaves> {
   ];
   final _controller = TextEditingController();
   int currid = 1;
+
+  final _Firestore = FirebaseFirestore.instance;
+
+  String _fromDate;
+  String _toDate;
+  String _reason;
+  String _description;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -58,12 +66,12 @@ class _LeavesState extends State<Leaves> {
                     lastDate: DateTime(2100),
                     icon: Icon(Icons.event),
                     dateLabelText: 'Date',
-                    onChanged: (fromDate) => print(fromDate),
+                    onChanged: (fromDate) => _fromDate = fromDate,
                     validator: (fromDate) {
                       print(fromDate);
                       return null;
                     },
-                    onSaved: (fromDate) => print(fromDate),
+                    onSaved: (fromDate) => _fromDate,
                   ),
                   SizedBox(
                     height: 50,
@@ -79,12 +87,11 @@ class _LeavesState extends State<Leaves> {
                     lastDate: DateTime(2100),
                     icon: Icon(Icons.event),
                     dateLabelText: 'Date',
-                    onChanged: (toDate) => print(toDate),
+                    onChanged: (toDate) => _toDate = toDate,
                     validator: (toDate) {
                       print(toDate);
                       return null;
                     },
-                    onSaved: (toDate) => print(toDate),
                   ),
                   SizedBox(
                     height: 50,
@@ -102,6 +109,7 @@ class _LeavesState extends State<Leaves> {
                     onChanged: (Item Value) {
                       setState(() {
                         selectedUser = Value;
+                        _reason =selectedUser.name;
                       });
                     },
                     items: users.map((Item user) {
@@ -123,6 +131,9 @@ class _LeavesState extends State<Leaves> {
                   ),
                   SizedBox(height: 10),
                   TextField(
+                    onChanged: (value){
+                      _description = value;
+                    },
                     controller: _controller,
                     decoration: InputDecoration(
                       focusedBorder: OutlineInputBorder(
@@ -132,19 +143,29 @@ class _LeavesState extends State<Leaves> {
                     maxLines: 3,
                   ),
                   SizedBox(height: 30),
-                  Container(
-                    // alignment: Alignment.center,
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      color: Color(0xFF64DD17),
-                      borderRadius: BorderRadius.circular(5.0),
-                    ),
-                    child: Text(
-                      "Ask For Leave",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 25.0,
-                        fontWeight: FontWeight.w600,
+                  GestureDetector(
+                    onTap: (){
+                      _Firestore.collection('leaves').add({
+                        'fromdate': _fromDate,
+                        'todate': _toDate,
+                        'reason': _reason,
+                        'Description': _description,
+                      });
+                    },
+                    child: Container(
+                      // alignment: Alignment.center,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                        color: Color(0xFF64DD17),
+                        borderRadius: BorderRadius.circular(5.0),
+                      ),
+                      child: Text(
+                        "Ask For Leave",
+                        style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 25.0,
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
                     ),
                   ),
