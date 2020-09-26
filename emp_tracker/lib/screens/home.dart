@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:emp_tracker/screens/tasks.dart';
 import 'package:emp_tracker/screens/profile.dart';
@@ -10,17 +12,48 @@ class Home extends StatefulWidget {
   @override
   _HomeState createState() => _HomeState();
 }
+String Ann1;
+String Ann2;
+String Ann3;
+String Ann4;
+String Ann5;
+String uid;
+User us;
+var snap;
+
+final _auth = FirebaseAuth.instance;
+var  firestore = FirebaseFirestore.instance;
+
+void getCurrentuserinfo() async{
+  us = _auth.currentUser;
+  uid = us.uid;
+  print(uid);
+  snap = await firestore.collection('Announcements').doc('Announcements').get();
+  Ann1 = snap.data().values.elementAt(4);
+  Ann2 = snap.data().values.elementAt(3);
+  Ann3 = snap.data().values.elementAt(2);
+  Ann4 = snap.data().values.elementAt(1);
+  Ann5 = snap.data().values.elementAt(0);
+
+}
+
 
 class _HomeState extends State<Home> {
   final List<String> entries = <String>[
-    'Announcement: 1',
-    'Announcement: 2',
-    'Announcement: 3',
-    'Announcement: 4',
-    'Announcement: 5'
+    Ann1,
+    Ann2,
+    Ann3,
+    Ann4,
+    Ann5,
   ];
   int currentIndex = 0;
   int co;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+     getCurrentuserinfo();
+  }
   @override
   Widget build(BuildContext context) {
     return SafeArea(
