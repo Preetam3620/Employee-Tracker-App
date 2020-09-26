@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:emp_tracker/screens/home.dart';
@@ -11,14 +12,13 @@ class Leaves extends StatefulWidget {
   _LeavesState createState() => _LeavesState();
 }
 
-
 class Item {
   const Item(this.name);
   final String name;
 }
 
 class _LeavesState extends State<Leaves> {
-
+  int remainingLeaves = Random().nextInt(30) + 1;
 
   final _auth = FirebaseAuth.instance;
   String mailid;
@@ -116,7 +116,7 @@ class _LeavesState extends State<Leaves> {
                     onChanged: (Item Value) {
                       setState(() {
                         selectedUser = Value;
-                        _reason =selectedUser.name;
+                        _reason = selectedUser.name;
                       });
                     },
                     items: users.map((Item user) {
@@ -138,7 +138,7 @@ class _LeavesState extends State<Leaves> {
                   ),
                   SizedBox(height: 10),
                   TextField(
-                    onChanged: (value){
+                    onChanged: (value) {
                       _description = value;
                     },
                     controller: _controller,
@@ -149,9 +149,14 @@ class _LeavesState extends State<Leaves> {
                     ),
                     maxLines: 3,
                   ),
+                  SizedBox(height: 20),
+                  Text(
+                    'Remaining Leaves: $remainingLeaves',
+                    style: TextStyle(fontSize: 20),
+                  ),
                   SizedBox(height: 30),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       _Firestore.collection('leaves').add({
                         'fromdate': _fromDate,
                         'todate': _toDate,
@@ -159,14 +164,13 @@ class _LeavesState extends State<Leaves> {
                         'description': _description,
                         'emailId': mailid,
                       });
-
-                      Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Leaves()));
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => Leaves()));
                       Alert(
-                          closeIcon: Icon(Icons.phone_missed,
-                            color: Colors.white,) ,
+                          closeIcon: Icon(
+                            Icons.phone_missed,
+                            color: Colors.white,
+                          ),
                           context: context,
                           type: AlertType.success,
                           title: 'Leave Application',
@@ -222,14 +226,15 @@ class _LeavesState extends State<Leaves> {
               backgroundColor: Colors.black,
             ),
           ],
-          onTap: (index){
+          onTap: (index) {
             setState(() {
               currid = index;
-              if(currid == 0){
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Home()));
-              }
-              else if(currid == 2)
-                Navigator.pushReplacement(context,MaterialPageRoute(builder: (context) => Profile()));
+              if (currid == 0) {
+                Navigator.pushReplacement(
+                    context, MaterialPageRoute(builder: (context) => Home()));
+              } else if (currid == 2)
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => Profile()));
             });
           },
         ),
