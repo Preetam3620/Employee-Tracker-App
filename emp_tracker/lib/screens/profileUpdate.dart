@@ -14,40 +14,33 @@ class ProfileUpdate extends StatefulWidget {
 }
 
 class _ProfileUpdateState extends State<ProfileUpdate> {
-
   File image;
 
-
-  void pickimage()async{
-    PickedFile pickedFile  = await ImagePicker().getImage(source: ImageSource.gallery);
+  void pickimage() async {
+    PickedFile pickedFile =
+        await ImagePicker().getImage(source: ImageSource.gallery);
     image = File(pickedFile.path);
-    setState(() {
-
-    });
+    setState(() {});
   }
 
-  void Storageimg(){
+  void Storageimg() {
     FirebaseStorage(storageBucket: 'gs://emptrack-3f0b6.appspot.com');
   }
 
-
-  String _bio= '';
+  String _bio = '';
   String uid;
   String _name = '';
   String _desig = '';
   String _emal;
-  AssetImage acc = AssetImage('images/mgk.jpg');
+  AssetImage acc = AssetImage('images/1mgk.jpeg');
   User us;
   final _auth = FirebaseAuth.instance;
   final _Firestore = FirebaseFirestore.instance;
-  void getCurrentuserinfo()
-  {
+  void getCurrentuserinfo() {
     us = _auth.currentUser;
     uid = us.uid;
 
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
@@ -65,10 +58,7 @@ class _ProfileUpdateState extends State<ProfileUpdate> {
           padding: EdgeInsets.all(10.0),
           child: SingleChildScrollView(
             child: SizedBox(
-              height: MediaQuery
-                  .of(context)
-                  .size
-                  .height,
+              height: MediaQuery.of(context).size.height,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: <Widget>[
@@ -81,16 +71,19 @@ class _ProfileUpdateState extends State<ProfileUpdate> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.end,
                         children: [
-                          SizedBox(width: 25.0,),
+                          SizedBox(
+                            width: 25.0,
+                          ),
                           CircleAvatar(
                             radius: 80.0,
                             //child: _image == null?Text('Enter Image here'):,
-                            backgroundImage: image == null? acc:FileImage(File(image.path)),
+                            backgroundImage: image == null
+                                ? acc
+                                : FileImage(File(image.path)),
                           ),
-
                           IconButton(
-                            icon: Icon(
-                                Icons.add, size: 40.0, color: Colors.white),
+                            icon: Icon(Icons.add,
+                                size: 40.0, color: Colors.white),
                             onPressed: () {
                               pickimage();
                             },
@@ -101,12 +94,12 @@ class _ProfileUpdateState extends State<ProfileUpdate> {
                   ),
                   SizedBox(height: 30.0),
                   Container(
-                    height:40.0,
-                    padding: EdgeInsets.only(left: 20.0,right: 20.0),
+                    height: 40.0,
+                    padding: EdgeInsets.only(left: 20.0, right: 20.0),
                     child: Expanded(
                       child: Center(
-                        child:TextField(
-                          onChanged: (value){
+                        child: TextField(
+                          onChanged: (value) {
                             _name = value;
                           },
                           textAlign: TextAlign.center,
@@ -116,9 +109,9 @@ class _ProfileUpdateState extends State<ProfileUpdate> {
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
                           ),
-                            decoration: InputDecoration(
-                              hintText: "Enter your Name",
-                            ),
+                          decoration: InputDecoration(
+                            hintText: "Enter your Name",
+                          ),
                         ),
                       ),
                     ),
@@ -127,104 +120,106 @@ class _ProfileUpdateState extends State<ProfileUpdate> {
                   Card(
                     color: Colors.white,
                     margin: EdgeInsets.symmetric(
-                      vertical: 3.0, horizontal: 25.0,),
+                      vertical: 3.0,
+                      horizontal: 25.0,
+                    ),
                     child: ListTile(
-
-                        leading: Icon(
-                          Icons.person,
-                          color: Color(0xFF00C2CB),
-                        ),
-                        title: TextField(
-                          decoration: InputDecoration(
+                      leading: Icon(
+                        Icons.person,
+                        color: Color(0xFF00C2CB),
+                      ),
+                      title: TextField(
+                        decoration: InputDecoration(
                             hintText: "Designation",
                             hintStyle: TextStyle(
                               color: Colors.black38,
-                            )
-                          ),
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontFamily: 'Roboc',
-                            fontSize: 25.0,
-                          ),
-                          onChanged: (value){
-                            _desig = value;
-                          },
+                            )),
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontFamily: 'Roboc',
+                          fontSize: 25.0,
                         ),
+                        onChanged: (value) {
+                          _desig = value;
+                        },
+                      ),
                     ),
                   ),
                   Card(
                     color: Colors.white,
                     margin: EdgeInsets.symmetric(
-                      vertical: 3.0, horizontal: 25.0,),
+                      vertical: 3.0,
+                      horizontal: 25.0,
+                    ),
                     child: ListTile(
-
-                        leading: Icon(
-                          Icons.assistant,
-                          color: Color(0xFF00C2CB),
+                      leading: Icon(
+                        Icons.assistant,
+                        color: Color(0xFF00C2CB),
+                      ),
+                      title: TextField(
+                        decoration: InputDecoration(
+                            hintText: "Bio",
+                            hintStyle: TextStyle(
+                              color: Colors.black38,
+                            )),
+                        maxLines: 4,
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontFamily: 'Roboc',
+                          fontSize: 25.0,
                         ),
-                        title: TextField(
-                          decoration: InputDecoration(
-                              hintText: "Bio",
-                              hintStyle: TextStyle(
-                                color: Colors.black38,
-                              )
-                          ),
-                          maxLines: 4,
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontFamily: 'Roboc',
-                            fontSize: 25.0,
-                          ),
-                          onChanged: (value){
-                            _bio = value;
-                          },
-                        ),
+                        onChanged: (value) {
+                          _bio = value;
+                        },
+                      ),
                     ),
                   ),
                   Card(
                     color: Colors.white,
                     margin: EdgeInsets.symmetric(
-                      vertical: 3.0, horizontal: 25.0,),
+                      vertical: 3.0,
+                      horizontal: 25.0,
+                    ),
                     child: ListTile(
-
-                        leading: Icon(
-                          Icons.email,
-                          color: Color(0xFF00C2CB),
+                      leading: Icon(
+                        Icons.email,
+                        color: Color(0xFF00C2CB),
+                      ),
+                      title: TextField(
+                        decoration: InputDecoration(
+                            hintText: "Email Id",
+                            hintStyle: TextStyle(
+                              color: Colors.black38,
+                            )),
+                        style: TextStyle(
+                          color: Colors.black54,
+                          fontFamily: 'Roboc',
+                          fontSize: 25.0,
                         ),
-                        title: TextField(
-                          decoration: InputDecoration(
-                              hintText: "Email Id",
-                              hintStyle: TextStyle(
-                                color: Colors.black38,
-                              )
-                          ),
-                          style: TextStyle(
-                            color: Colors.black54,
-                            fontFamily: 'Roboc',
-                            fontSize: 25.0,
-                          ),
-                          onChanged: (value){
-                            _emal = value;
-                          },
-                        ),
+                        onChanged: (value) {
+                          _emal = value;
+                        },
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 20.0,
                   ),
                   GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       _Firestore.collection('Usere').doc(uid).set({
                         'bio': _bio,
                         'designation': _desig,
                         'displayname': _name,
                         'emailId': _emal,
                       });
-                      Navigator.pushReplacement(
-                          context, MaterialPageRoute(builder: (context) => Profile()));
+                      Navigator.pushReplacement(context,
+                          MaterialPageRoute(builder: (context) => Profile()));
                       Alert(
-                          closeIcon: Icon(Icons.phone_missed,
-                            color: Colors.white,) ,
+                          closeIcon: Icon(
+                            Icons.phone_missed,
+                            color: Colors.white,
+                          ),
                           context: context,
                           type: AlertType.success,
                           title: 'Profile Updated',
@@ -259,7 +254,10 @@ class _ProfileUpdateState extends State<ProfileUpdate> {
                       ),
                     ),
                   ),
-                  Expanded(flex: 1, child: Container(),)
+                  Expanded(
+                    flex: 1,
+                    child: Container(),
+                  )
                 ],
               ),
             ),
@@ -270,9 +268,8 @@ class _ProfileUpdateState extends State<ProfileUpdate> {
           elevation: 0.0,
           backgroundColor: Color(0xFF00C2CB),
           title: Text('Profile Update'),
-            ),
         ),
-
-      );
+      ),
+    );
   }
 }
